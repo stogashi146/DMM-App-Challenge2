@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :ensure_current_user,only:[:edit,:update]
   before_action :ensure_current_user,only:[:edit,:update]
 
   def ensure_current_user

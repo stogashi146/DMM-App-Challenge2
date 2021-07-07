@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-
+  before_action :ensure_current_user,only:[:edit,:update]
   before_action :ensure_current_user,only:[:edit,:update]
   def ensure_current_user
     @book = Book.find(params[:id])
@@ -15,6 +15,7 @@ class BooksController < ApplicationController
   end
 
   def index
+    @favorite = Favorite.new
     @books = Book.all
     @book = Book.new
   end
